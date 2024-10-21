@@ -1,0 +1,38 @@
+/* Container styling for scrolling effect */
+.home-clients__hidden-list {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: scroll;
+  justify-content: center;
+  align-items: center;
+  perspective: 500px; /* 3D perspective for individual items */
+  margin: 0;
+  padding: 0;
+}
+
+/* Default styling for each div */
+.home-clients__label {
+  font-size: 4rem; /* Large font */
+  color: gray;
+  transition: color 0.5s, text-shadow 0.5s, transform 0.5s;
+  text-align: center;
+  width: 100%;
+  margin: 50px 0; /* Space between each label */
+  text-transform: uppercase;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Default 3D shadow effect */
+  transform: translateZ(-50px); /* 3D transform giving a slight depth */
+}
+
+.home-clients__label.active {
+  color: black;
+  font-weight: bold;
+  text-shadow: none; /* Remove shadow for active state */
+  transform: translateZ(0); /* Bring the text closer in the active state */
+}
+
+@media (min-width: 1024px) {
+  .home-clients__label {
+    font-size: 4rem;
+  }
+}

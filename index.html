@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #e9edf4;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            height: 200vh; /* Allow scrolling */
+            perspective: 1000px; /* Perspective for 3D effect */
+        }
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+        }
+        .container div {
+            font-size: 4rem;
+            margin: 50px 0;
+            color: rgba(0, 0, 0, 0.2);
+            transform: rotateX(30deg) translateZ(-100px); /* Initial 3D tilt */
+            transition: color 0.3s ease, transform 0.6s ease-out;
+        }
+        .container div.active {
+            color: black;
+            transform: rotateX(0deg) translateZ(0); /* Flatten as active */
+            font-size: 5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>KENDRICK LAMAR</div>
+        <div>EVERYTHING ALWAYS</div>
+        <div>RAUW ALEJANDRO</div>
+        <div>TRAVIS SCOTT</div>
+        <div>KENDRICK LAMAR</div>
+        <div>EVERYTHING ALWAYS</div>
+        <div>RAUW ALEJANDRO</div>
+        <div>TRAVIS SCOTT</div>
+        <div>BABY KEEM</div>
+        <div>REDBULL</div>
+        <div>ROSALIA</div>
+    </div>
+
+    <script>
+        const divs = document.querySelectorAll('.container div');
+
+        window.addEventListener('scroll', () => {
+            divs.forEach(div => {
+                const rect = div.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // When div is in the center of the screen
+                if (rect.top >= windowHeight / 4 && rect.bottom <= windowHeight * 3 / 4) {
+                    div.classList.add('active');
+                } else {
+                    div.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
